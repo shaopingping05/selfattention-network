@@ -31,7 +31,7 @@ For MacOS M1 users: `pip install --no-binary keras-tcn keras-tcn`. The `--no-bin
 
 ## Run
 
-Reproducible results are possible on (NVIDIA) GPUs using the [tensorflow-determinism](https://github.com/NVIDIA/tensorflow-determinism) library. It was tested with keras-tcn
+Reproducible results are possible on (NVIDIA) GPUs using the [tensorflow-determinism](https://github.com/NVIDIA/tensorflow-determinism) library. It was tested with model_test.py
 
 
 
