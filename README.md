@@ -17,30 +17,6 @@ For MacOS M1 users: `pip install --no-binary keras-tcn keras-tcn`. The `--no-bin
   <b>Visualization of a stack of dilated causal convolutional layers (Wavenet, 2016)</b><br><br>
 </p>
 
-## TCN Layer
-
-### TCN Class
-
-```python
-TCN(
-    nb_filters=64,
-    kernel_size=3,
-    nb_stacks=1,
-    dilations=(1, 2, 4, 8, 16, 32),
-    padding='causal',
-    use_skip_connections=True,
-    dropout_rate=0.0,
-    return_sequences=False,
-    activation='relu',
-    kernel_initializer='he_normal',
-    use_batch_norm=False,
-    use_layer_norm=False,
-    use_weight_norm=False,
-    go_backwards=False,
-    return_state=False,
-    **kwargs
-)
-```
 
 
 ### Input shape
