@@ -6,16 +6,13 @@ pip install keras-tcn --no-dependencies  # without the dependencies if you alrea
 
 For MacOS M1 users: `pip install --no-binary keras-tcn keras-tcn`. The `--no-binary` option will force pip to download the sources (tar.gz) and re-compile them locally. Also make sure that `grpcio` and `h5py` are installed correctly. There are some tutorials on how to do that online.
 
-## Why TCN (Temporal Convolutional Network) instead of LSTM/GRU?
+##  Add attention to TCN (Temporal Convolutional Network) 
 
-- TCNs exhibit longer memory than recurrent architectures with the same capacity.
-- Performs better than LSTM/GRU on long time series (Seq. MNIST, Adding Problem, Copy Memory, Word-level PTB...).
-- Parallelism (convolutional layers), flexible receptive field size (how far the model can see), stable gradients (compared to backpropagation through time, vanishing gradients)...
+- Exhibit longer memory than recurrent architectures with the same capacity.
+- Performs better than original TCN on long time series 
+- Parallelism (convolutional layers), flexible receptive field size (how far the model can see), stable gradients (compared to backpropagation through time, vanishing gradients)are performed better
 
-<p align="center">
-  <img src="misc/Dilated_Conv.png">
-  <b>Visualization of a stack of dilated causal convolutional layers (Wavenet, 2016)</b><br><br>
-</p>
+
 
 
 
@@ -23,33 +20,14 @@ For MacOS M1 users: `pip install --no-binary keras-tcn keras-tcn`. The `--no-bin
 
 3D tensor with shape `(batch_size, timesteps, input_dim)`.
 
-`timesteps` can be `None`. This can be useful if each sequence is of a different length: [Multiple Length Sequence Example](tasks/multi_length_sequences.py).
 
 ### Output shape
 
-- if `return_sequences=True`: 3D tensor with shape `(batch_size, timesteps, nb_filters)`.
-- if `return_sequences=False`: 2D tensor with shape `(batch_size, nb_filters)`.
+- `return_sequences=True`: 3D tensor with shape `(batch_size, timesteps, nb_filters)`.
 
 
 
 
-
-
-
-
-
-### Non-causal TCN
-
-Making the TCN architecture non-causal allows it to take the future into consideration to do its prediction as shown in the figure below.
-
-However, it is not anymore suitable for real-time applications.
-
-<p align="center">
-  <img src="misc/Non_Causal.png">
-  <b>Non-Causal TCN - ks = 3, dilations = [1, 2, 4, 8], 1 block</b><br><br>
-</p>
-
-To use a non-causal TCN, specify `padding='valid'` or `padding='same'` when initializing the TCN layers.
 
 ## Run
 
